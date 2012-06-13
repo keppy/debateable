@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-     <a class="brand" href="#">
+     <a class="brand" href='/'>
        Debateable
      </a>
      <form class="navbar-search pull-right">
@@ -9,8 +9,9 @@
      </form>
      <nav>
          <ul class="nav pull-right">
-           <li><%= link_to "Home",    '#'%></li>
-           <li><%= link_to "Help",    '#'%></li>
+           <li><%= link_to "Home",    root_path %></li>
+           <li><%= link_to "Help",    help_path %></li>
+           <li><%= link_to "About",   about_path %></li>
            <li><%= link_to "Sign in", '#'%></li>
          </ul>
      </nav>

@@ -1,7 +1,9 @@
+
 @import "bootswatch/cerulean/variables";
 @import "bootstrap";
 @import "bootswatch/cerulean/bootswatch";
 
+$grayHero: rgb(238, 238, 238);
 /* unversal dictation! */
 
 html {
@@ -38,4 +40,31 @@ textarea {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+}
+
+/* footer */
+footer {
+  margin-top: 40px;
+  padding-top: 5px;
+  border-top: 1px solid $grayHero;
+  color: rgb(238, 238, 238);
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+    margin-left: 5px;
+  }
+  ul {
+    float: right;
+    margin-right: 5px;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
 }

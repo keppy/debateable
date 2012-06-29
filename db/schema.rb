@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622071225) do
+ActiveRecord::Schema.define(:version => 20120627143542) do
+
+  create_table "debates", :force => true do |t|
+    t.string   "title"
+    t.integer  "proposition_id"
+    t.integer  "opposition_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
+  has_many :propositions, :as => :debateable
+  has_many :oppositions, :as => :debateable
+
   before_save { |user| user.email = email.downcase }
 
   validates :email, presence:   true, 

@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe Debate do
 
-  before do
+  let(:prop_user) { FactoryGirl.create(:user) }
+  let(:opp_user) { FactoryGirl.create(:user) }
+  before do 
     @debate = Debate.new(title: "Test Debate")
+    @prop = prop_user.proposition.build(content: "Argue argue")
+    @opp = opp_user.opposition.build(content: "Argue some more")
   end
-
   subject { @debate }
 
   it { should respond_to(:title) }

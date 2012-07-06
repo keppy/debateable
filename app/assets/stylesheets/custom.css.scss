@@ -1,7 +1,6 @@
-@import "bootstrap";
-@import "bootswatch/cerulean/variables";
-@import "bootswatch/cerulean/bootswatch";
+
 $grayHero: rgb(238, 238, 238);
+
 /* unversal dictation! */
 
 html {
@@ -38,6 +37,11 @@ textarea {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+}
+
+.navbar-search {
+  padding:0px 20px 0px 30px;
+  margin-left: 10px;
 }
 
 /* footer */

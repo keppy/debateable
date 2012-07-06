@@ -32,13 +32,6 @@ describe Debate do
     it { should_not be_valid }
   end
 
-  describe "when the debate has no user id" do
-    before { @debate.user_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe
-
 # Accessible Attributes Safety
   describe "accessible attributes" do
     it "should not allow access to user_id" do

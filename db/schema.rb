@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703042125) do
+ActiveRecord::Schema.define(:version => 20120706061820) do
 
   create_table "debates", :force => true do |t|
     t.string   "title"
@@ -25,28 +25,22 @@ ActiveRecord::Schema.define(:version => 20120703042125) do
 
   create_table "oppositions", :force => true do |t|
     t.string   "title"
-    t.integer  "debateable_id"
-    t.string   "debateable_type"
     t.string   "slide"
     t.string   "footnotes"
     t.string   "response"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.integer  "debate_id"
   end
 
   create_table "propositions", :force => true do |t|
     t.string   "title"
-    t.integer  "debateable_id"
-    t.string   "debateable_type"
     t.string   "slide"
     t.string   "footnotes"
     t.string   "response"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.integer  "debate_id"
   end
 
   create_table "users", :force => true do |t|

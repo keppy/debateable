@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
   
-  has_many :propositions
-  has_many :oppositions  
+  has_many :propositions, :inverse_of => :user
+  has_many :oppositions, :inverse_of => :user  
 
   before_save { |user| user.email = email.downcase }
 

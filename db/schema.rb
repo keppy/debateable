@@ -11,16 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707013628) do
+ActiveRecord::Schema.define(:version => 20120711164736) do
 
   create_table "debates", :force => true do |t|
     t.string   "title"
-    t.integer  "proposition_id"
-    t.integer  "opposition_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "proposition_user_id"
+    t.integer  "user_id"
     t.integer  "opposition_user_id"
+    t.integer  "proposition_user_id"
   end
 
   create_table "oppositions", :force => true do |t|
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120707013628) do
     t.string   "response"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "debate_id"
     t.integer  "user_id"
   end
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20120707013628) do
     t.string   "response"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "debate_id"
     t.integer  "user_id"
   end
 

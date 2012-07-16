@@ -1,0 +1,20 @@
+<% provide(:title, 'Create a Proposition') %>
+<h1>Proposition</h1>
+
+<div class="row">
+  <div class="span2 offset1">
+    <%= form_for (@proposition) do |f| %>
+      <%= f.label :topic %>
+      <%= f.text_field :title %>
+
+      <%= f.label :slide %>
+      <%= f.text_field :slide %>
+
+      <%= f.label :footnotes %>
+      <%= f.text_field :footnotes %>
+      
+      <%= f.submit "Save Proposition", class: "btn btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

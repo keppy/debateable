@@ -19,4 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
+  def start_debate
+  end
 end

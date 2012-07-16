@@ -1,12 +1,12 @@
 class CreateOppositions < ActiveRecord::Migration
   def change
-    create_table :oppositions do |t|
+    create_table do |t|
       t.string :title
-      t.integer :debateable_id
-      t.string :debateable_type
       t.string :slide
       t.string :footnotes
       t.string :response
+      t.integer :debate_id
+      t.integer :user_id
 
       t.timestamps
     end

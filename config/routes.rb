@@ -1,6 +1,6 @@
 Debateable::Application.routes.draw do
-  resources :users do
-    resources :propositions
+  resources :users, :only => [:index, :create, :destroy, :new, :edit, :show] do
+    resources :propositions, :only => [:index, :create, :destroy, :new, :edit, :show] 
     resources :oppositions
   end
 
@@ -11,8 +11,8 @@ Debateable::Application.routes.draw do
     resources :oppositions
   end
 
-  resources :propositions
-  resources :oppositions
+#  resources :propositions
+#  resources :oppositions
 
   root to: 'static_pages#home'
 

@@ -1,5 +1,5 @@
 Debateable::Application.routes.draw do
-  resources :users, :only => [:index, :create, :destroy, :new, :edit, :show] do
+  resources :users, :only => [:index, :create, :destroy, :new, :edit, :show, :update] do
     resources :propositions, :only => [:index, :create, :destroy, :new, :edit, :show] 
     resources :oppositions
   end

@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 def full_title(page_title)
   base_title = "Debateable"
   if page_title.empty?
@@ -5,4 +7,13 @@ def full_title(page_title)
   else
     "#{base_title} | #{page_title}"
   end
+end
+
+def sign_in(user)
+  visit signin_path
+  fill_in "Email",    with: user.email
+  fill_in "Password", with: user.password
+  click_button "Sign in"
+  # Without Capybara
+  cookies[:remember_token] = user.remember_token
 end

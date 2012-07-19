@@ -17,9 +17,10 @@ describe "User pages" do
 
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
+    it { should have_link('Create a Proposition') }
 
-    describe "visiting the proposition creation page" do
-      before { visit new_user_proposition_path(user) }
+    describe "visit the proposition creation page" do
+      before {  click_link "Create a Proposition" }     
       let(:submit) { "Save Proposition" }
 
       it { should have_selector('title', text: 'Create a Proposition') }
@@ -86,6 +87,46 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome, debater!') }
         it { should have_link('Sign out') }
       end
+    end
+  end  
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      visit signin_path
+      fill_in "Email",    with: user.email
+      fill_in "Password", with: user.password
+      click_button "Sign in"
+      visit edit_user_path(user)
+    end
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Update profile") }
+      it { should have_selector('title', text: "Edit user") }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+
+    describe "with valid information" do
+      let(:new_name) { "New name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Email",            with: new_email
+        fill_in "Password",         with: user.password
+        fill_in "Confirm Password", with: user.password
+        click_button "Save changes"
+    end
+
+    it { should have_selector('title', text: new_name) }
+    it { should have_selector('div.alert.alert-success') }
+    it { should have_link('Sign out', href: signout_path) }
+    specify { user.reload.name.should == new_name }
+    specify { user.reload.email.should == new_email }
     end
   end 
 end

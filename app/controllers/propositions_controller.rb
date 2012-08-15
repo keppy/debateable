@@ -2,15 +2,15 @@ class PropositionsController < ApplicationController
 #  before_filter :signed_in_user
 #  before_filter :correct_user, only: :destroy
 
- def index
- end
+  def index
+  end
 
   def new
     @proposition = current_user.propositions.new
   end
 
   def create
-    @proposition = current_user.propositions.build(params[:proposition])
+    @proposition = current_user.propositions.create(params[:proposition])
     if @proposition.save 
       flash[:success] = "Proposition saved!"
     else
@@ -20,7 +20,7 @@ class PropositionsController < ApplicationController
 
   private
     def correct_user
-      @micropost = current_user.microposts.find_by_id(params[:id])
-      redirect_to root_path if @micropost.nil
+      @proposition = current_user.propositions.find_by_id(params[:id])
+      redirect_to root_path if @proposition.nil
     end
 end

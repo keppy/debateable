@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @propositions = @user.propositions.paginate(page: params[:page])
+    @propositions_count = @user.propositions.count
   end
 
   def new

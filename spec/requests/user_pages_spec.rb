@@ -18,9 +18,9 @@ describe "User pages" do
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
     it { should have_link('Create a Proposition') }
-
+      
     describe "visit the proposition creation page" do
-      before {  click_link "Create a Proposition" }     
+      before {  click_button }     
       let(:submit) { "Save Proposition" }
 
       it { should have_selector('title', text: 'Create a Proposition') }

@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="span2 offset1">
-    <%= form_for(@proposition, :url => user_propositions_path(:user_id), :method => :post) do |f| %>
+    <%= form_for @proposition, :url => { :action => "create" } do |f| %>
       <%= f.label :topic %>
       <%= f.text_field :title %>
 

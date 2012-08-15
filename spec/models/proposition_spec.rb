@@ -14,16 +14,6 @@ describe Proposition do
   
   it { should be_valid }
   
-
-  describe "debate index creation" do
-    before do 
-      @proposition.index_on_debate
-    end
-      
-    its(:debate_id) { should_not be_nil }
-    its(:debate_id) { should == Debate.last.id }
-  end 
-
   describe "when title is nil" do
     before { @proposition.title = nil }
     it { should_not be_valid }

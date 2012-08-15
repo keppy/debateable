@@ -6,11 +6,6 @@ Debateable::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :debates do
-    resources :propositions
-    resources :oppositions
-  end
-
 #  resources :propositions
 #  resources :oppositions
 

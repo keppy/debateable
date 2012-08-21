@@ -1,9 +1,10 @@
 <% provide(:title, 'Create a Proposition') %>
+<% @proposition = current_user.propositions.new if @proposition.nil? %>
 <h1>Proposition</h1>
 
 <div class="row">
-  <div class="span2 offset1">
-    <%= form_for @proposition, :url => { :action => "create" } do |f| %>
+    <div class="span2 offset1">
+        <%= form_for @proposition, :url => { :action => "create" } do |f| %>
       <%= f.label :topic %>
       <%= f.text_field :title %>
 

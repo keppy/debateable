@@ -4,6 +4,7 @@ Debateable::Application.routes.draw do
     resources :oppositions
   end
 
+  resources :propositions
   resources :sessions, only: [:new, :create, :destroy]
 
 #  resources :propositions

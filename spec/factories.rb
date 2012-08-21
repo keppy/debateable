@@ -5,18 +5,26 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
-  
-  factory :debate do
-    title "Debate title"
-  end
     
   factory :proposition do
-    title "Prop title"
-    user
+    sequence(:title) { |n| "Prop title - #{n}" }
+    sequence(:slide) { |n| "Prop slide - #{n}" }
+    sequence(:footnotes) { |n| "Prop footnotes - #{n}" }
+  end
+  factory :invalid_proposition, :parent => :proposition do
+    title nil
+    slide nil
+    footnotes nil
   end
 
   factory :opposition do
-    title "Opp title"
-    user
+    sequence(:title) { |n| "Opp title - #{n}" }
+    sequence(:slide) { |n| "Opp slide - #{n}" }
+    sequence(:footnotes) { |n| "Opp footnotes - #{n}" }
+  end
+  factory :invalid_opposition, :parent => :opposition do
+    title nil
+    slide nil
+    footnotes nil
   end
 end

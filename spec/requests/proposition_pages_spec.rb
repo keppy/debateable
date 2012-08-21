@@ -1,21 +1,24 @@
 require 'spec_helper'
+describe "Proposition pages" do
 
- subject { page }
+  subject { page }
 
-  describe "Proposition creation page" do
+  describe "Creation page" do
+
     let(:user) { FactoryGirl.create(:user) }
-    before { visit new_user_propositions_path(user) }
+    let(:proposition) { FactoryGirl.create(:proposition) }
 
-    it { should have_selector('h1',    text: user.name) }
-    it { should have_selector('title', text: user.name) }
-    it { should have_link('Save Proposition') }
+    before do
+      sign_in(user)
+      visit new_user_proposition_path(user, @proposition)
+    end
+
+    it { should have_selector('h1',    text: 'Proposition') }
+    it { should have_selector('title', text: 'Create a Proposition') }
+    it { should have_button('Save Proposition') }
       
-    describe "visit the proposition creation page" do
-      before {  click_button }     
+    describe "creating a proposition" do
       let(:submit) { "Save Proposition" }
-
-      it { should have_selector('title', text: 'Create a Proposition') }
-      it { should have_selector('h1',    text: 'Proposition') }
 
       describe "with invalid proposition fields" do
         it "should not change proposition count" do
@@ -29,21 +32,55 @@ require 'spec_helper'
         fill_in "Slide",     with: "a1s2d3f4g5"
         fill_in "Footnotes", with: "foobar"
         end
-      end
+        it "should create a proposition" do
+          expect { click_button submit }.to change(Proposition, :count).by(1)
+        end
 
-      it "should create a proposition" do
-        expect { click_button submit }.to change(Proposition, :count).by(1)
-      end
+        describe "after saving the proposition" do
+          let(:proposition) { Proposition.find_by_slide('a1s2d3f4g5') }
 
-      describe "after saving the proposition" do
-        before { click_button submit }
-        let(:proposition) { Proposition.find_by_slide('a1s2d3f4g5') }
-
-        it { should have_selector('title', text: proposition.title) }
-        it { should have_selector('h1', text: proposition.title) }
-        it { should have_selector('div.alert.alert-success', text: 'Proposition Created.') }
-        it { should have_link('Propose another topic for debate') }
-        it { should have_link('Make this topic Debateable!') }
+          it { should have_selector('title', text: "THBT Testing is the only option.") }
+          it { should have_selector('h1', text: "THBT Testing is the only option.") }
+          it { should have_selector('div.alert.alert-success', text: 'Proposition Created.') }
+          it { should have_link('Propose another topic for debate') }
+          it { should have_link('Make this topic Debateable!') }
+        end
       end
     end
+  end
 
+  describe "Index page" do
+
+    subject { page }
+
+    describe "as an unidentified user" do
+      before { visit propositions_path }
+      it { should have_selector('div.alert.alert-alert', text: 'You may browse current debates, but you should sign up to start debating!') }
+    end
+
+    describe "as authentic user" do
+
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        sign_in(user)
+        visit propositions_path
+      end 
+
+      it { should have_selector('title', text: 'Debateable Propositions') }
+      it { should have_selector('h1', text: 'Debateable Propositions') }
+
+    end
+  end
+
+  describe "Proposition page"
+
+    subject { page }
+    let(:user1) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+    let(:prop1) { FactoryGirl.create(:proposition, user: user1) }
+
+    describe "as an unidentified user" do
+      before { visit proposition_path(prop1) }
+      it { should have_selector('div.alert.alert-alert', text: 'Sign Up or Sign In to oppose this proposition.') }
+  end
+end

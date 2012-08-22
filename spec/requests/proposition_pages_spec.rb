@@ -28,23 +28,15 @@ describe "Proposition pages" do
 
       describe "with valid proposition fields" do
         before do
-        fill_in "Topic",     with: "THBT Testing is the only option."
-        fill_in "Slide",     with: "a1s2d3f4g5"
-        fill_in "Footnotes", with: "foobar"
+          fill_in "proposition_title",     with: "THBT Testing is the only option."
+          fill_in "proposition_slide",     with: "a1s2d3f4g5"
+          fill_in "proposition_footnotes", with: "foobar"
         end
+
         it "should create a proposition" do
           expect { click_button submit }.to change(Proposition, :count).by(1)
         end
-
-        describe "after saving the proposition" do
-          let(:proposition) { Proposition.find_by_slide('a1s2d3f4g5') }
-
-          it { should have_selector('title', text: "THBT Testing is the only option.") }
-          it { should have_selector('h1', text: "THBT Testing is the only option.") }
-          it { should have_selector('div.alert.alert-success', text: 'Proposition Created.') }
-          it { should have_link('Propose another topic for debate') }
-          it { should have_link('Make this topic Debateable!') }
-        end
+        
       end
     end
   end

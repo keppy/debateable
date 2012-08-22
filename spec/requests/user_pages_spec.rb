@@ -19,6 +19,7 @@ describe "User pages" do
     it { should have_selector('title', text: user.name) }
     it { should have_link('Create a Proposition') }
     it { should have_link('Oppose a Proposition') }      
+
 #    describe "visit the proposition creation page" do
 #      before {  click_button }     
 #      let(:submit) { "Save Proposition" }

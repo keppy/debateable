@@ -9,6 +9,11 @@ class PropositionsController < ApplicationController
     end
   end
 
+  def debateable_proposition_index
+    propositions = Proposition.scoped.table
+    @propositions = posts.where(params[:user_id].eq(current_user).not).to_sql
+  end
+
   def show
     @proposition = Proposition.find(params[:id])
     if !signed_in?

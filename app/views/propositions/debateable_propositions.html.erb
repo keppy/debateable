@@ -1,0 +1,10 @@
+<% provide(:title, 'Debateable Propositions') %>
+<h1>Debateable Propositions</h1>
+
+
+<ul class="propositions">
+  <% @propositions.each do |proposition| %>
+    <%= render proposition %>
+  <% end %>
+</ul>
+

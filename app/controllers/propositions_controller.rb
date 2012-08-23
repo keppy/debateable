@@ -9,9 +9,8 @@ class PropositionsController < ApplicationController
     end
   end
 
-  def debateable_proposition_index
-    propositions = Proposition.scoped.table
-    @propositions = posts.where(params[:user_id].eq(current_user).not).to_sql
+  def debateable_propositions
+    @propositions = Proposition.debateable_by(current_user)
   end
 
   def show
@@ -30,6 +29,7 @@ class PropositionsController < ApplicationController
     @proposition = current_user.propositions.create(params[:proposition])
     if @proposition.save 
       flash[:success] = "Proposition saved!"
+      redirect_to @user
     else
       flash[:error] = "Proposition not saved."
     end

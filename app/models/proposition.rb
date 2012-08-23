@@ -6,6 +6,11 @@ class Proposition < ActiveRecord::Base
   validates :user_id, presence: true
   validates :title, presence: true
 
+  def self.debateable_by(user)
+    where do
+      (user_id != user.id)
+    end
+  end
   # This method creates a debate and
   # Assigns its id to the instance's 
   # debate_id

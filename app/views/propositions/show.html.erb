@@ -1,0 +1,9 @@
+<% provide(:title, @proposition.title) %>
+<h1><%= @proposition.title %></h1>
+
+<div class = "proposition_slide">
+  <slide>
+    <%= @proposition.slide %>
+  </slide>
+</div>
+<%= @proposition.footnotes %>

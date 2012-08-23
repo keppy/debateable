@@ -17,8 +17,8 @@ Debateable::Application.routes.draw do
   match '/signup',      to: 'users#new'
   match '/signin',      to: 'sessions#new'
   match '/signout',     to: 'sessions#destroy', via: :delete
-
- #  get "static_pages/home"
+  match '/debateable-propositions', to: 'propositions#debateable_propositions'
+ #  get "static_pages/home" 	
 
  #  get "static_pages/help"
 

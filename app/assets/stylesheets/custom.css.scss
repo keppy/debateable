@@ -1,6 +1,10 @@
+@import "bootswatch/cerulean/variables";
 $grayHero: rgb(238, 238, 238);
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+@import "bootswatch/cerulean/bootswatch";
 /* unversal dictation! */
-
 html {
   overflow-y: scroll;
 }
